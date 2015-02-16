@@ -1,7 +1,7 @@
 include <../dynamixel/xl320_def.scad>
 
 //Variables
-FrameTolerance = 0.2;
+FrameTolerance = 0;
 
 UFrameHeight = 25;
 CircularBaseFrameRadius = 50;

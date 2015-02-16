@@ -12,7 +12,7 @@ use <../ollo_segments/ollo_xl320_segment.scad>;
 
 use <../../MCAD/rotate.scad>;
 
-module U_three_ollo_to_horn_frame(length, radius=2*ollo_segment_thickness(1), hornAngle=45, nLayer=1, width=OlloSegmentWidth, interAxisLength=MotorWidth, tolerance=FrameTolerance) {
+module U_three_ollo_to_horn_frame(length, radius=2*ollo_segment_thickness(1), hornAngle=0, nLayer=1, width=OlloSegmentWidth, interAxisLength=MotorWidth, tolerance=FrameTolerance) {
   // length is the lenght between the center of the ollo holes and the top of the frame
   // radius is the curvature of the U
   // hornAngle is the orientation of the crossOlloHole
@@ -32,7 +32,7 @@ module U_three_ollo_to_horn_frame(length, radius=2*ollo_segment_thickness(1), ho
                 three_ollo_stop_segment(nLayer, width);
 }
 
-module add_U_three_ollo_to_horn_frame(length, radius=2*ollo_segment_thickness(1), hornAngle=45, nLayer=1, width=OlloSegmentWidth, interAxisLength=MotorWidth, , tolerance=FrameTolerance) {
+module add_U_three_ollo_to_horn_frame(length, radius=2*ollo_segment_thickness(1), hornAngle=0, nLayer=1, width=OlloSegmentWidth, interAxisLength=MotorWidth, , tolerance=FrameTolerance) {
   // length is the lenght between the center of the ollo holes and the top of the frame
   // radius is the curvature of the U
   // hornAngle is the orientation of the crossOlloHole

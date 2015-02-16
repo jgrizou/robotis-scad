@@ -1,8 +1,8 @@
 // Diameter of the body of Ollo Rivet
-OlloInDiameter = 4.2;
+OlloInDiameter = 4;
 
 // Diameter of the tip of Ollo Rivet
-OlloOutDiameter = 5.2;
+OlloOutDiameter = 5;
 
 // Depth of one layer of Ollo Rivet
 OlloLayerThickness = 3;

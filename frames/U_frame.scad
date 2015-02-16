@@ -35,7 +35,7 @@ module U_frame(height=UFrameHeight, radius=2*ollo_segment_thickness(1), nLayer=1
       U_branch(height, radius, nLayer, width, interAxisLength, tolerance);
 }
 
-module add_bottom_crossOlloHoles_to_U_frame(height=UFrameHeight, angle=45, nLayer=1) {
+module add_bottom_crossOlloHoles_to_U_frame(height=UFrameHeight, angle=0, nLayer=1) {
 
   thickness = ollo_segment_thickness(nLayer);
 
