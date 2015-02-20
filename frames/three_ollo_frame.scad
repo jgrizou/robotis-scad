@@ -1,6 +1,6 @@
 include <frame_def.scad>
 
-include <../ollo_segments/ollo_segment_def.scad>
+include <../ollo_segments/ollo_segments_def.scad>
 
 use <../ollo/ollo_tools.scad>
 use <../ollo_segments/ollo_straight_segment.scad>
@@ -51,8 +51,8 @@ nLayer = 1;
 if (p==1) {
   xl320();
   add_side_to_side_frame(50) {
-    /*xl320();*/
-    /*#add_side_to_side_frame(50)*/
-      /*xl320();*/
+    xl320();
+    #add_side_to_side_frame(50)
+      xl320();
   }
 }

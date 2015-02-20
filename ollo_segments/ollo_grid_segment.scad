@@ -1,4 +1,4 @@
-include <ollo_segment_def.scad>
+include <ollo_segments_def.scad>
 include <../ollo/ollo_def.scad>;
 
 use <ollo_straight_segment.scad>;

@@ -2,7 +2,7 @@ include <frame_def.scad>
 
 include <../dynamixel/xl320_def.scad>
 include <../ollo/ollo_def.scad>
-include <../ollo_segments/ollo_segment_def.scad>
+include <../ollo_segments/ollo_segments_def.scad>
 
 use <../ollo/ollo_tools.scad>
 use <../ollo_segments/ollo_straight_segment.scad>
@@ -26,13 +26,13 @@ module U_three_ollo_to_horn_frame(length, radius=2*ollo_segment_thickness(1), ho
       add_three_ollo_start_segment(nLayer, width)
         add_ollo_straight_segment(sideStraightSegmentLength, nLayer, width)
           add_ollo_elbow_segment(90, radius, false, nLayer, width)
-          add_ollo_horn_straight_segment(bottomStraightSegmentLength, nLayer, width, hornAngle)
-            add_ollo_elbow_segment(90, radius, false, nLayer, width)
-              add_ollo_straight_segment(sideStraightSegmentLength, nLayer, width)
-                three_ollo_stop_segment(nLayer, width);
+            add_ollo_horn_straight_segment(bottomStraightSegmentLength, nLayer, width, hornAngle)
+              add_ollo_elbow_segment(90, radius, false, nLayer, width)
+                add_ollo_straight_segment(sideStraightSegmentLength, nLayer, width)
+                  three_ollo_stop_segment(nLayer, width);
 }
 
-module add_U_three_ollo_to_horn_frame(length, radius=2*ollo_segment_thickness(1), hornAngle=0, nLayer=1, width=OlloSegmentWidth, interAxisLength=MotorWidth, , tolerance=FrameTolerance) {
+module add_U_three_ollo_to_horn_frame(length, radius=2*ollo_segment_thickness(1), hornAngle=0, nLayer=1, width=OlloSegmentWidth, interAxisLength=MotorWidth, tolerance=FrameTolerance) {
   // length is the lenght between the center of the ollo holes and the top of the frame
   // radius is the curvature of the U
   // hornAngle is the orientation of the crossOlloHole

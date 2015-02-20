@@ -2,7 +2,7 @@ include <frame_def.scad>
 
 include <../dynamixel/xl320_def.scad>
 include <../ollo/ollo_def.scad>
-include <../ollo_segments/ollo_segment_def.scad>
+include <../ollo_segments/ollo_segments_def.scad>
 
 use <../ollo/ollo_tools.scad>
 use <../ollo_segments/ollo_straight_segment.scad>
