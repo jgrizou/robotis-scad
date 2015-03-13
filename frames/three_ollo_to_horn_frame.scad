@@ -13,7 +13,7 @@ use <../ollo_segments/ollo_xl320_segment.scad>;
 use <../../MCAD/rotate.scad>;
 
 
-module three_ollo_to_horn_side_branch(length, angle, radius, hornAngle, ratioLengthFirstSegment, nLayer, width) {
+module three_ollo_to_horn_side_branch(length, angle=25, radius=5, hornAngle=0, ratioLengthFirstSegment=0.5, nLayer=1, width=OlloSegmentWidth) {
   // length is the lenght between the center of the ollo holes
   // radius is the curvature of the transition
   // angle is the smoothness of the transition
