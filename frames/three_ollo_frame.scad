@@ -9,7 +9,7 @@ use <../ollo_segments/ollo_xl320_segment.scad>;
 use <../../MCAD/rotate.scad>;
 
 
-module three_ollo_side_branch(length, nLayer, width) {
+module three_ollo_side_branch(length, nLayer=1, width=OlloSegmentWidth) {
   // length is the lenght between the center of the ollo holes
   straightSegmentLength = length - OlloSpacing;
 
@@ -31,7 +31,7 @@ module three_ollo_frame(length, nLayer=1, width=OlloSegmentWidth) {
   }
 }
 
-module add_side_to_side_frame(length, nLayer=1, width=OlloSegmentWidth) {
+module add_three_ollo_frame(length, nLayer=1, width=OlloSegmentWidth) {
   three_ollo_frame(length, nLayer, width);
   translate([0, length, 0])
     for(i = [0 : $children - 1])
