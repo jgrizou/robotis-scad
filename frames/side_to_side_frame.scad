@@ -13,7 +13,7 @@ use <../../MCAD/rotate.scad>;
 
 
 
-module side_branch(length, nSupport, nLayer, width, tolerance) {
+module side_branch(length, nSupport=0, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance) {
   // length is the lenght between the motors
   // nSupport is the number of elements joining both side
   thickness = ollo_segment_thickness(nLayer);
@@ -48,7 +48,7 @@ module side_branch(length, nSupport, nLayer, width, tolerance) {
   }
 }
 
-module side_to_side_frame(length, nSupport=1, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance) {
+module side_to_side_frame(length, nSupport=0, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance) {
 
   thickness = ollo_segment_thickness(nLayer);
 
@@ -61,7 +61,7 @@ module side_to_side_frame(length, nSupport=1, nLayer=1, width=OlloSegmentWidth, 
   }
 }
 
-module add_side_to_side_frame(length,nSupport=1, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance) {
+module add_side_to_side_frame(length,nSupport=0, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance) {
 
   side_to_side_frame(length, nSupport, nLayer, width, tolerance);
   translate([0,length+3*OlloSpacing,0])
