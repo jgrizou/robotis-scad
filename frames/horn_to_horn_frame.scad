@@ -48,8 +48,7 @@ use <../dynamixel/xl320.scad>
 
 p = 1;
 if (p==1) {
-  add_horn_to_horn_frame(50)
-    translate([MotorWidth/2,0,0])
-      horn_to_horn_frame(30,2,30,45);
-  /*cube([1,50,10]);*/
+  rotate([0,90,0])
+    xl320_two_horns();
+  horn_to_horn_frame(50);
 }

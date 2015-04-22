@@ -58,16 +58,16 @@ echo("##########");
 use <../dynamixel/xl320.scad>
 
 p = 1;
-nLayer = 1;
 if (p==1) {
   xl320_two_horns();
   add_U_horn_to_horn_frame(20)
     translate([0,MotorWidth/2+OlloLayerThickness,0])
       rotate([90,0,0])
         xl320();
-
+}
+if (p==2) {
+  xl320_two_horns();
   translate([0,0,MotorHeight/2+OlloLayerThickness])
     verticalize_U_horn_to_horn_frame(20)
       U_horn_to_horn_frame(20);
-
 }

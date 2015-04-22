@@ -79,7 +79,6 @@ echo("##########");
 use <../dynamixel/xl320.scad>
 
 p = 1;
-nLayer = 1;
 if (p==1) {
 
   /*cube([1,118/2,10]);*/
