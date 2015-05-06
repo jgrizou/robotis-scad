@@ -47,12 +47,10 @@ echo("##########");
 use <../dynamixel/xl320.scad>
 
 p = 1;
-nLayer = 1;
 if (p==1) {
   xl320();
-  add_side_to_side_frame(50) {
-    xl320();
-    #add_side_to_side_frame(50)
+  add_three_ollo_frame(50)
+  translate([0,4*OlloSpacing,0])
+    rotate([0,-90,0])
       xl320();
-  }
 }
