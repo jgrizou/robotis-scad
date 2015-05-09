@@ -1,4 +1,7 @@
 include <../frames/frame_def.scad>
+include <../dynamixel/xl320_def.scad>
+include <../ollo_segments/ollo_segments_def.scad>
+
 include <../../raspberry-scad/raspberry_pi_Bplus_def.scad>
 
 CircularBaseFrameRadius = 50;
@@ -31,3 +34,7 @@ RaspberryPiBplusFramecameraDistFromEnd = 10;
 legoWheelDiameter = 30.5;
 WheelDiameter = legoWheelDiameter;
 AxleLength = 15;
+
+4WheelsFrameWidthSpacing = 2.5*MotorHeight;
+4WheelsFrameLengthSpacing = 2*MotorLength;
+4WheelsFrameMiddleBarWidth = OlloSegmentWidth;
