@@ -4,13 +4,9 @@ include <../dynamixel/xl320_def.scad>
 include <../ollo/ollo_def.scad>
 include <../ollo_segments/ollo_segments_def.scad>
 
-
 use <U_horn_frame.scad>;
 
 use <../../MCAD/rotate.scad>;
-
-
-
 
 module U_horn_to_U_horn_frame(length, motorAngle=90, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance) {
 
