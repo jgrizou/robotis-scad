@@ -67,17 +67,21 @@ module horn(d=HornTopDiameter) {
 }
 
 module xl320() {
+  render(covexity=4) {
     box();
     translate_to_box_top()
       translate([0,0,OlloLayerThickness/2])
         horn();
+  }
 }
 
 module xl320_two_horns() {
-  xl320();
-    translate_to_box_bottom()
-      translate([0,0,-OlloLayerThickness/2])
-        horn(d=HornBottomDiameter);
+  render(covexity=4) {
+    xl320();
+      translate_to_box_bottom()
+        translate([0,0,-OlloLayerThickness/2])
+          horn(d=HornBottomDiameter);
+  }
 }
 
 // Usefull transformation to position on motor
