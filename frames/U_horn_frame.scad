@@ -52,8 +52,5 @@ use <../dynamixel/xl320.scad>
 p = 1;
 if (p==1) {
   xl320_two_horns();
-    add_U_horn_frame(20)
-      translate([0,MotorWidth/2+OlloLayerThickness,0])
-        rotate([90,0,0])
-          xl320();
+    U_horn_frame(20);
 }
