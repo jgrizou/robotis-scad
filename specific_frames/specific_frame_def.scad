@@ -35,6 +35,17 @@ legoWheelDiameter = 30.5;
 WheelDiameter = legoWheelDiameter;
 AxleLength = 15;
 
+
 4WheelsFrameWidthSpacing = 2.5*MotorHeight;
 4WheelsFrameLengthSpacing = 2*MotorLength;
 4WheelsFrameMiddleBarWidth = OlloSegmentWidth;
+
+
+FlowerPotOlloAttachDepth = 10;
+FlowerPotOlloAttachWidth = 15;
+FlowerPotOlloAttachPointRadius = CircularBaseFrameRadius - OlloLayerThickness;
+
+BasicFlowerPotFrameHeight = RaspberryPiBplusLength + FlowerPotOlloAttachDepth + 20;
+BasicFlowerPotFrameInternalTopRadius = CircularBaseFrameRadius + 10;
+BasicFlowerPotFrameInternalBaseRadius = RaspberryPiBplusWidth/2 + 10;
+BasicFlowerPotFrameWallThickness = 2*OlloLayerThickness;
