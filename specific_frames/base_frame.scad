@@ -12,7 +12,7 @@ use <../ollo_segments/ollo_xl320_segment.scad>;
 
 use <../../MCAD/rotate.scad>;
 
-module side_branch(height, nLayer, width, withHole=false) {
+module side_branch(height, nLayer, width, withHole=true) {
   thickness = ollo_segment_thickness(nLayer);
 
   rotate([0,0,90])
@@ -22,7 +22,7 @@ module side_branch(height, nLayer, width, withHole=false) {
     ollo_straight_segment(height-width/2, nLayer, 4*OlloSpacing);
 }
 
-module base_frame(height, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance, withHole=false) {
+module base_frame(height, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance, withHole=true) {
 
   thickness = ollo_segment_thickness(nLayer);
 
@@ -36,7 +36,7 @@ module base_frame(height, nLayer=1, width=OlloSegmentWidth, tolerance=FrameToler
     }
 }
 
-module circular_base_frame(radius=CircularBaseFrameRadius, height=CircularBaseFrameHeight, nLayer=1, width=OlloSegmentWidth, withHole=false) {
+module circular_base_frame(radius=CircularBaseFrameRadius, height=CircularBaseFrameHeight, nLayer=1, width=OlloSegmentWidth, withHole=true) {
 
   thickness = ollo_segment_thickness(nLayer);
 
