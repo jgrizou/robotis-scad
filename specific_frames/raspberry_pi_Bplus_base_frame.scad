@@ -44,10 +44,9 @@ module raspberry_pi_Bplus_plate(cornerRadius=RaspberryPiBplusFrameCornerRadius, 
   } else {
     raspberry_pi_Bplus_plate_sharp(nLayer=nLayer);
   }
-
 }
 
-module raspberry_pi_Bplus_base_frame(baseHeight=RaspberryPiBplusFrameHeight,boardHeight=5, holeType="spike", cornerRadius=RaspberryPiBplusFrameCornerRadius, cameraDistFromEnd=RaspberryPiBplusFrameCameraDistFromEnd, nLayer=1, withHole=false) {
+module raspberry_pi_Bplus_base_frame(baseHeight=RaspberryPiBplusFrameHeight,boardHeight=5, holeType="spike", cornerRadius=RaspberryPiBplusFrameCornerRadius, cameraDistFromEnd=RaspberryPiBplusFrameCameraDistFromEnd, nLayer=1, withHole=true) {
 
   thickness = ollo_segment_thickness(nLayer);
 
@@ -103,18 +102,35 @@ module circular_vertical_raspberry_pi_Bplus_base_frame_with_raspberry_board(base
 
 
 
-module raspberry_pi_Bplus_base_frame_with_wheels(baseHeight=RaspberryPiBplusFrameHeight) {
+module raspberry_pi_Bplus_base_frame_with_wheels_and_battery_holes(baseHeight=RaspberryPiBplusFrameHeight) {
 
   difference() {
     raspberry_pi_Bplus_base_frame(baseHeight=baseHeight);
 
-    translate([RaspberryPiBplusFrameWidth/2-MotorHeight/2,0,MotorHeight/2-baseHeight+ollo_segment_thickness(1)/2])
+    translate([RaspberryPiBplusFrameWidth/2-MotorHeight/2,0,MotorHeight/2-baseHeight+ollo_segment_thickness(1)/2]){
       wheels_holes();
-    translate([-RaspberryPiBplusFrameWidth/2+MotorHeight/2,0,MotorHeight/2-baseHeight+ollo_segment_thickness(1)/2])
+      translate([0,6*OlloSpacing,0]){
+        threeOlloHoles();
+        translate([-OlloSpacing,3*OlloSpacing,0])
+          rotate([0,0,90])
+            threeOlloHoles();
+      }
+    }
+
+    translate([-RaspberryPiBplusFrameWidth/2+MotorHeight/2,0,MotorHeight/2-baseHeight+ollo_segment_thickness(1)/2]){
       wheels_holes();
+      translate([0,6*OlloSpacing,0]){
+        threeOlloHoles();
+        translate([OlloSpacing,3*OlloSpacing,0])
+          rotate([0,0,90])
+            threeOlloHoles();
+      }
+    }
+
 
     translate([0,RaspberryPiBplusFrameLenght-RaspberryPiBplusWidth/2-RaspberryPiBplusFrameCameraDistFromEnd,MotorHeight/2-baseHeight+ollo_segment_thickness(1)/2])
       wheels_holes(withCableHole=false, spaceBetweenHoles=2*OlloSpacing);
+
   }
 }
 
