@@ -13,15 +13,15 @@ use <../../MCAD/rotate.scad>;
 
 
 
-module side_branch(length, nSupport=0, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance) {
+module side_branch(length, nSupport=0, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance, withHole=true) {
   // length is the lenght between the motors
   // nSupport is the number of elements joining both side
   thickness = ollo_segment_thickness(nLayer);
   straightSegmentLength = length - 4*OlloSpacing;
 
-  add_ollo_xl320_side_start_segment(nLayer, width)
+  add_ollo_xl320_side_start_segment(nLayer, width, withHole)
     add_ollo_straight_segment(straightSegmentLength, nLayer, width)
-      ollo_xl320_side_stop_segment(nLayer, width);
+      ollo_xl320_side_stop_segment(nLayer, width, withHole);
 
   // support
   // TODO: all the following defintiion can be simpliest by finding first the middle (as the middle of the all swgment), then the range.
@@ -48,22 +48,22 @@ module side_branch(length, nSupport=0, nLayer=1, width=OlloSegmentWidth, toleran
   }
 }
 
-module side_to_side_frame(length, nSupport=0, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance) {
+module side_to_side_frame(length, nSupport=0, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance, withHole=true) {
 
   thickness = ollo_segment_thickness(nLayer);
 
   rotate([0,90,0]){
     translate([0,0,-MotorWidth/2-thickness/2-tolerance])
-      side_branch(length, nSupport, nLayer, width, tolerance);
+      side_branch(length, nSupport, nLayer, width, tolerance, withHole);
     mirror([0,0,1])
       translate([0,0,-MotorWidth/2-thickness/2-tolerance])
-        side_branch(length, nSupport, nLayer, width, tolerance);
+        side_branch(length, nSupport, nLayer, width, tolerance, withHole);
   }
 }
 
-module add_side_to_side_frame(length,nSupport=0, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance) {
+module add_side_to_side_frame(length,nSupport=0, nLayer=1, width=OlloSegmentWidth, tolerance=FrameTolerance, withHole=true) {
 
-  side_to_side_frame(length, nSupport, nLayer, width, tolerance);
+  side_to_side_frame(length, nSupport, nLayer, width, tolerance, withHole);
   translate([0,length+3*OlloSpacing,0])
     for(i = [0 : $children - 1])
       children(i);
