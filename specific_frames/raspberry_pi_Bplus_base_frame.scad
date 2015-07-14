@@ -153,7 +153,6 @@ module raspberry_pi_Bplus_holder_frame(baseHeight=OlloLayerThickness, baseLength
 
             for (i = [0 : 2*OlloSpacing : baseLength ]){
               translate([i,0,0]){
-                echo(i);
                 if (i == 10*OlloSpacing) {
                   gridOlloHoles([1,7], nLayer=nLayer);
                 } else {
