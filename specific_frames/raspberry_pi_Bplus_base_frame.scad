@@ -16,6 +16,7 @@ use <../../segment-scad/elliptic_segment.scad>
 use <../../raspberry-scad/raspberry_pi_Bplus_tools.scad>
 
 use <../../MCAD/rotate.scad>;
+use <../../MCAD/rounded_cube.scad>;
 
 module raspberry_pi_Bplus_plate_sharp(nLayer=1) {
 
@@ -134,6 +135,62 @@ module raspberry_pi_Bplus_base_frame_with_wheels_and_battery_holes(baseHeight=Ra
   }
 }
 
+module raspberry_pi_Bplus_holder_frame(baseHeight=OlloLayerThickness, baseLength=RaspberryPiBplusHolderFrameLength, distSupportToBoard=RaspberryPiBplusHolderFrameDistSupportToBoard, supportHeight=RaspberryPiBplusHolderFrameSupportHeight , nLayer=1) {
+
+  thickness = ollo_segment_thickness(nLayer);
+
+  difference() {
+    union() {
+
+      // support plate
+      difference() {
+        translate([-distSupportToBoard/2,0,-thickness/2])
+          rounded_cube(baseLength, RaspberryPiBplusWidth, thickness, RaspberryPiBplusHolesDiameter, center=true);
+
+        translate([0,0,-thickness/2]){
+
+          translate([-RaspberryPiBplusLength/2-distSupportToBoard+thickness+OlloSpacing/2,0,0])
+
+            for (i = [0 : 2*OlloSpacing : baseLength ]){
+              translate([i,0,0]){
+                echo(i);
+                if (i == 10*OlloSpacing) {
+                  gridOlloHoles([1,7], nLayer=nLayer);
+                } else {
+                  gridOlloHoles([1,9], nLayer=nLayer);
+                }
+              }
+            }
+        }
+      }
+
+      // holder from the top
+      translate([-RaspberryPiBplusLength/2-distSupportToBoard+thickness/2,0,1.5*OlloSpacing-thickness]){
+        rotate([0,90,0])
+          difference() {
+            rounded_cube(RaspberryPiBplusHolderFrameSupportHeight, RaspberryPiBplusWidth+2*OlloSpacing, thickness, RaspberryPiBplusHolesDiameter, center=true);
+
+            translate([0,RaspberryPiBplusWidth/2+OlloSpacing/2,0])
+              threeOlloHoles();
+
+            translate([0,-RaspberryPiBplusWidth/2-OlloSpacing/2,0])
+              threeOlloHoles();
+
+            rounded_cube(RaspberryPiBplusHolderFrameSupportHeight-2*thickness, RaspberryPiBplusWidth, thickness, RaspberryPiBplusHolesDiameter, center=true);
+
+          }
+      }
+
+      // raspberry plot support
+      raspberry_pi_Bplus_hole_support(baseHeight, "screw");
+    }
+
+    // holes inside support plate
+    translate([0,0,-thickness])
+      raspberry_pi_Bplus_hole_support(thickness, "hole");
+  }
+}
+
 // Testing
 echo("##########");
 echo("In raspberry_pi_Bplus_base_frame.scad");
@@ -142,7 +199,7 @@ echo("##########");
 
 use <../dynamixel/xl320.scad>
 
-p = 1;
+p = 2;
 baseHeight = RaspberryPiBplusFrameHeight;
 if (p==1) {
   raspberry_pi_Bplus_base_frame_with_raspberry_board();
@@ -162,7 +219,7 @@ if (p==1) {
   }
 
   translate([-150,0,0]) {
-    raspberry_pi_Bplus_base_frame_with_wheels(baseHeight);
+    raspberry_pi_Bplus_base_frame_with_wheels_and_battery_holes(baseHeight);
 
     translate([0,RaspberryPiBplusWidth+RaspberryPiBplusFrameDistanceBoardToMotor,MotorHeight/2+ollo_segment_thickness(1)])
       xl320();
@@ -177,4 +234,10 @@ if (p==1) {
       rotate([0,90,0])
         add_wheel("lego");
   }
+}
+baseHeight=OlloLayerThickness;
+if (p==2) {
+  raspberry_pi_Bplus_holder_frame(baseHeight);
+  translate([0,0,baseHeight])
+    add_raspberry_pi_Bplus();
 }

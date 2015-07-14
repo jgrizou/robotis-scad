@@ -31,6 +31,11 @@ RaspberryPiBplusFrameHeight = CircularBaseFrameHeight + 1;
 
 RaspberryPiBplusFramecameraDistFromEnd = 10;
 
+RaspberryPiBplusHolderFrameDistSupportToBoard = 8.5;
+RaspberryPiBplusHolderFrameLength = RaspberryPiBplusLength + RaspberryPiBplusHolderFrameDistSupportToBoard;
+RaspberryPiBplusHolderFrameSupportHeight = 3*OlloSpacing;
+
+
 legoWheelDiameter = 30.5;
 WheelDiameter = legoWheelDiameter;
 AxleLength = 15;
@@ -42,10 +47,10 @@ AxleLength = 15;
 
 
 FlowerPotOlloAttachDepth = 10;
-FlowerPotOlloAttachWidth = 15;
-FlowerPotOlloAttachPointRadius = CircularBaseFrameRadius - OlloLayerThickness;
+FlowerPotOlloAttachInternalRaidus = CircularBaseFrameRadius - OlloSpacing;
+FlowerPotOlloAttachPointRadius = CircularBaseFrameRadius - OlloSpacing/2;
 
 BasicFlowerPotFrameHeight = RaspberryPiBplusLength + FlowerPotOlloAttachDepth + 30;
 BasicFlowerPotFrameInternalTopRadius = CircularBaseFrameRadius + 10;
 BasicFlowerPotFrameInternalBaseRadius = RaspberryPiBplusWidth/2 + 10;
-BasicFlowerPotFrameWallThickness = 2*OlloLayerThickness;
+BasicFlowerPotFrameWallThickness = OlloLayerThickness;
