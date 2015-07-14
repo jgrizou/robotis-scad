@@ -54,3 +54,6 @@ BasicFlowerPotFrameHeight = RaspberryPiBplusLength + FlowerPotOlloAttachDepth + 
 BasicFlowerPotFrameInternalTopRadius = CircularBaseFrameRadius + 10;
 BasicFlowerPotFrameInternalBaseRadius = RaspberryPiBplusWidth/2 + 10;
 BasicFlowerPotFrameWallThickness = OlloLayerThickness;
+
+BasicFlowerPotFrameBandDistFromTop = 30;
+BasicFlowerPotFrameBandThickness = 3*OlloLayerThickness;

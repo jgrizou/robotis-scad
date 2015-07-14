@@ -11,13 +11,19 @@ module ollo_holes_flower_pot(radius=FlowerPotOlloAttachPointRadius, nHoles=8){
   }
 }
 
-module basic_flower_pot_frame(potHeight=BasicFlowerPotFrameHeight, supportDistFromTop=FlowerPotOlloAttachDepth, potInternalBaseRadius=BasicFlowerPotFrameInternalBaseRadius, potInternalTopRadius=BasicFlowerPotFrameInternalTopRadius, wallThickness=BasicFlowerPotFrameWallThickness){
+module basic_flower_pot_frame(potHeight=BasicFlowerPotFrameHeight, supportDistFromTop=FlowerPotOlloAttachDepth, potInternalBaseRadius=BasicFlowerPotFrameInternalBaseRadius, potInternalTopRadius=BasicFlowerPotFrameInternalTopRadius, wallThickness=BasicFlowerPotFrameWallThickness, bandDistFromTop=BasicFlowerPotFrameBandDistFromTop, bandThickness=BasicFlowerPotFrameBandThickness){
+
+  bandStartRadius = potInternalBaseRadius + (potInternalTopRadius-potInternalBaseRadius)*((potHeight-bandDistFromTop)/potHeight);
 
   translate([0,0,-BasicFlowerPotFrameHeight+supportDistFromTop]) {
     difference() {
       union() {
         difference() {
-          cylinder(h=potHeight, r1=potInternalBaseRadius+wallThickness, r2=potInternalTopRadius+wallThickness);
+          union() {
+            cylinder(h=potHeight, r1=potInternalBaseRadius+wallThickness, r2=potInternalTopRadius+wallThickness);
+            translate([0,0,potHeight-bandDistFromTop])
+              cylinder(h=bandDistFromTop, r1=bandStartRadius+bandThickness, r2=potInternalTopRadius+bandThickness);
+          }
           cylinder(h=potHeight, r1=potInternalBaseRadius, r2=potInternalTopRadius);
 
         }
