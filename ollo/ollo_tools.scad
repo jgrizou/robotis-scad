@@ -33,13 +33,32 @@ module crossOlloHoles(nLayer=1, outerBottom=true, outerTop=true, innerDiameter=O
       threeOlloHoles(nLayer, outerBottom, outerTop, innerDiameter, outerDiameter);
 }
 
+// x times y holes
+module gridOlloHoles(XYGridSize=[1,1], center= true, nLayer=1, outerBottom=true, outerTop=true, innerDiameter=OlloInDiameter, outerDiameter=OlloOutDiameter)
+{
+  if (center) {
+    translate([-(XYGridSize[0]-1)*OlloSpacing/2,-(XYGridSize[1]-1)*OlloSpacing/2, 0])
+      gridOlloHoles(XYGridSize, false, nLayer, outerBottom, outerTop, innerDiameter, outerDiameter);
+
+  } else {
+    for ( i = [0 : XYGridSize[0]-1]) {
+      for ( j = [0 : XYGridSize[1]-1]) {
+        translate([i*OlloSpacing, j*OlloSpacing, 0])
+          olloHole(nLayer, outerBottom, outerTop, innerDiameter, outerDiameter);
+      }
+    }
+  }
+}
+
+
 // Testing
 echo("##########");
 echo("In ollo_tools.scad");
 echo("This file should not be included, use ''use <filemane>'' instead.");
 echo("##########");
 
-p = 3;
+p = 4;
 if (p == 1) olloHole();
 if (p == 2) threeOlloHoles(2,true,false);
 if (p == 3) crossOlloHoles(3,false,true);
+if (p == 4) gridOlloHoles([3,3], center=true);
