@@ -34,7 +34,7 @@ module basic_flower_pot_frame(potHeight=BasicFlowerPotFrameHeight, supportDistFr
   difference() {
     difference() {
       cylinder(h=ollo_segment_thickness(1), r=attachRadius, center=true);
-      cylinder(h=ollo_segment_thickness(1), r=attachRadius-FlowerPotOlloAttachWidth, center=true);
+      cylinder(h=ollo_segment_thickness(1), r=FlowerPotOlloAttachInternalRaidus, center=true);
     }
     ollo_holes_flower_pot();
   }
@@ -52,5 +52,4 @@ use <../dynamixel/xl320.scad>
 p = 1;
 if (p==1) {
   basic_flower_pot_frame();
-
 }
