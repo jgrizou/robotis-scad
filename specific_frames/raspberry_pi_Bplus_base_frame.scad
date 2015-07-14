@@ -141,30 +141,26 @@ module raspberry_pi_Bplus_holder_frame(baseHeight=OlloLayerThickness, baseLength
 
   difference() {
     union() {
-
       // support plate
       difference() {
-        translate([-distSupportToBoard/2,0,-thickness/2])
-          rounded_cube(baseLength, RaspberryPiBplusWidth, thickness, RaspberryPiBplusHolesDiameter, center=true);
+        translate([baseLength/2-RaspberryPiBplusLength/2-distSupportToBoard,0,-thickness/2])
+          rounded_cube(baseLength+thickness, RaspberryPiBplusWidth, thickness, RaspberryPiBplusHolesDiameter, center=true);
 
-        translate([0,0,-thickness/2]){
-
-          translate([-RaspberryPiBplusLength/2-distSupportToBoard+thickness+OlloSpacing/2,0,0])
-
-            for (i = [0 : 2*OlloSpacing : baseLength ]){
-              translate([i,0,0]){
-                if (i == 10*OlloSpacing) {
-                  gridOlloHoles([1,7], nLayer=nLayer);
-                } else {
-                  gridOlloHoles([1,9], nLayer=nLayer);
-                }
+        translate([-RaspberryPiBplusLength/2+RaspberryPiBplusHolesDistToSide,0,-thickness/2]){
+          for (i = [0 : 2*OlloSpacing : baseLength-RaspberryPiBplusHolesDistToSide-OlloSpacing]){
+            translate([i,0,0]){
+              if (i == 10*OlloSpacing || i == 0) {
+                gridOlloHoles([1,7], nLayer=nLayer);
+              } else {
+                gridOlloHoles([1,9], nLayer=nLayer);
               }
             }
+          }
         }
       }
 
       // holder from the top
-      translate([-RaspberryPiBplusLength/2-distSupportToBoard+thickness/2,0,1.5*OlloSpacing-thickness]){
+      translate([-RaspberryPiBplusLength/2-distSupportToBoard,0,1.5*OlloSpacing-thickness]){
         rotate([0,90,0])
           difference() {
             rounded_cube(RaspberryPiBplusHolderFrameSupportHeight, RaspberryPiBplusWidth+2*OlloSpacing, thickness, RaspberryPiBplusHolesDiameter, center=true);

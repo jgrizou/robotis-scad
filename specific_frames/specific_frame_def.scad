@@ -31,7 +31,7 @@ RaspberryPiBplusFrameHeight = CircularBaseFrameHeight + 1;
 
 RaspberryPiBplusFramecameraDistFromEnd = 10;
 
-RaspberryPiBplusHolderFrameDistSupportToBoard = 8.5;
+RaspberryPiBplusHolderFrameDistSupportToBoard = RaspberryPiBplusSDCardOutter;
 RaspberryPiBplusHolderFrameLength = RaspberryPiBplusLength + RaspberryPiBplusHolderFrameDistSupportToBoard;
 RaspberryPiBplusHolderFrameSupportHeight = 3*OlloSpacing;
 
